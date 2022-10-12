@@ -3,6 +3,7 @@ const createPlayer = (name, mark) => {
     return {name, mark};
 }
 
+function startGame() {
 const gameBoard = (function() {
     
     //declare gameboard as an array
@@ -79,10 +80,12 @@ const game = (() => {
         [2, 4, 6],
     ];
 
-    //checks for winner
+    //create reset button after winning
+    function showButton() {
+    document.getElementById("resetBtn").style.display = "block";
+    }
 
-    
-
+    //checks winner
     function checkWinner() {
         winCombinations.forEach((item, index) => { // [0, 1, 2, 4, 5, 6, 7]
             if (gameBoard.board[item[0]] === this.currentPlayer.mark && 
@@ -91,9 +94,7 @@ const game = (() => {
                     console.log('winner!');
                     displayer.innerHTML = `<b>${this.currentPlayer.name} wins!</b>`;
                     this.winnerDeclared = true;
-            const reset = document.createElement('button');
-            reset.classList.add('resetBtn');
-            displayer.appendChild(reset);
+                    showButton();
               }
         })
     }
@@ -112,13 +113,34 @@ const game = (() => {
 
     //declare tie
     function declareTie() {
-        displayer.innerHTML = "</b>Tie game!</b>";
+        displayer.innerHTML = "<b>Tie game!</b>";
     }
 
     //return (needed when using modules)
     return {
-        currentPlayer, remainingSpots, checkWinner, alertNextPlayer, nextPlayer, declareTie, winnerDeclared
+        currentPlayer, remainingSpots, checkWinner, alertNextPlayer, nextPlayer, declareTie, winnerDeclared, showButton
     };
-
-
 })();
+}
+
+startGame();
+
+function hideResetBtn() {
+    document.getElementById('resetBtn').style.display = "none";
+}
+
+function resetDOM() {
+    document.querySelector('.displayer').innerHTML = `<span class="player-name">Player 1</span>, it's your turn.`;
+    document.querySelector('.squares').innerHTML = '';
+}
+
+function handleReset() {
+    document.querySelector('.resetBtn').addEventListener('click', function(){
+        resetDOM();
+        startGame();
+        hideResetBtn();
+
+    });
+}
+
+handleReset();

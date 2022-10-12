@@ -50,11 +50,16 @@ header{
 }
 .resetBtn {
     padding: 10px 20px;
-    border: 3px solid black;;
+    border: 3px solid black;
     border-radius: 7px;
-    background-color: black;
     color: var(--orange);
     font-size: 50px;
+    display: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    margin: 1em auto;
+    
 }
 
 /* main */
