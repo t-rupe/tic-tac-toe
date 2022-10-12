@@ -114,6 +114,7 @@ const game = (() => {
     //declare tie
     function declareTie() {
         displayer.innerHTML = "<b>Tie game!</b>";
+        showButton();
     }
 
     //return (needed when using modules)

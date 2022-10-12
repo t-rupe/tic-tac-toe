@@ -43,7 +43,7 @@ header{
 .displayer{
     font-family: 'JetBrains Mono', monospace;
     font-size: 1.6rem;
-    color: #1B1212
+    color: #1B1212;
 }
 .displayer span{
     font-weight: 900;
