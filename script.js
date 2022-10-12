@@ -104,7 +104,7 @@ const game = (() => {
         this.currentPlayer === playerOne ? playerName.textContent = 'Player 2' : playerName.textContent = 'Player 1';
     }
 
-    //net player
+    //next player
     function nextPlayer() {
         this.currentPlayer === playerOne ? this.currentPlayer = playerTwo : this.currentPlayer = playerOne;
         console.log('nextPlayer() function ran');
